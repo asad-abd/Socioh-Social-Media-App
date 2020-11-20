@@ -1,0 +1,8 @@
+Users/userid/   email, name, username, avatar
+
+Photos/photo-id   author, caption, posted, url
+
+Comments/photo-id/comment-id   author, posted, comment
+
+
+

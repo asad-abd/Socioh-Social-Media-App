@@ -8,23 +8,31 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/masked-view": "0.1.10",
+    "@react-navigation/bottom-tabs": "^5.10.0",
+    "@react-navigation/native": "^5.8.0",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
     "expo-status-bar": "~1.0.2",
     "expo-updates": "~0.3.2",
+    "firebase": "7.9.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.3",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-reanimated": "~1.13.0",
+    "react-native-safe-area-context": "3.1.4",
     "react-native-screens": "~2.10.1",
     "react-native-unimodules": "~0.11.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "^0.14.4",
+    "react-navigation": "^4.4.3",
+    "react-navigation-tabs": "^2.10.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0",
+    "@babel/core": "^7.12.3",
     "babel-jest": "~25.2.6",
     "jest": "~25.2.6",
+    "metro-react-native-babel-preset": "^0.64.0",
     "react-test-renderer": "~16.13.1"
   },
   "jest": {
