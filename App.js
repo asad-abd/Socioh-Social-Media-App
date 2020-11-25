@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { createStackNavigator, NavigationContainer } from '@react-navigation/native';
+import {  NavigationContainer, createStackNavigator } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import  { useState, useEffect } from 'react';
-
+import { registerRootComponent } from 'expo';
 
 import { f, auth, database, storage } from './config/config.js';
 
@@ -15,7 +15,20 @@ import userProfile from './app/screens/userProfile.js'
 import comments from './app/screens/comments.js'
 
 const Stack = createStackNavigator();
-const MainStack= createBottomTabNavigator();
+const BottomStack= createBottomTabNavigator();
+
+function BottomTab(){
+  return (
+    <NavigationContainer>
+      <BottomStack.Navigator>
+        <BottomStack.Screen name="Feed" component={feed} />
+        <BottomStack.Screen name="Upload" component={upload} />
+        <BottomStack.Screen name="Profile" component={profile} />
+      </BottomStack.Navigator>
+    </NavigationContainer>
+  );
+}
+
 export default function App() {
   
   useEffect(() => {
@@ -34,21 +47,11 @@ export default function App() {
   
   return (
     <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={
-          //<NavigationContainer>
-          <MainStack.Navigator>
-            <MainStack.Screen name="Feed" component={feed} />
-            <MainStack.Screen name="Upload" component={upload} />
-            <MainStack.Screen name="Profile" component={profile} />
-          </MainStack.Navigator>
-          //</NavigationContainer>
-      }/>
-      
-      <Stack.Screen name="User" component={userProfile} />
-      <Stack.Screen name="Comments" component={comments} />
-      
-    </Stack.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={BottomTab} />
+        <Stack.Screen name="User" component={userProfile} />
+        <Stack.Screen name="Comments" component={comments} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
@@ -61,13 +64,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+//registerRootComponent(App);
 /*
 // in case of function App
 <NavigationContainer>
-      <MainStack.Navigator>
-        <MainStack.Screen name="Feed" component={feed} />
-        <MainStack.Screen name="Upload" component={upload} />
-        <MainStack.Screen name="Profile" component={profile} />
-      </MainStack.Navigator>
+      <BottomStack.Navigator>
+        <BottomStack.Screen name="Feed" component={feed} />
+        <BottomStack.Screen name="Upload" component={upload} />
+        <BottomStack.Screen name="Profile" component={profile} />
+      </BottomStack.Navigator>
     </NavigationContainer>
 */
