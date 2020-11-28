@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity, FlatList, StyleSheet,Text, View, Image} from 'react-native';
 import { f, auth, database, storage } from '../../config/config.js';
 
-class profile extends React.Component{
+class userProfile extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -78,4 +78,4 @@ class profile extends React.Component{
     }
 }
 
-export default profile;
+export default userProfile;

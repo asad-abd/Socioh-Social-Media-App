@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import {  NavigationContainer, createStackNavigator } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import  { useState, useEffect } from 'react';
-import { registerRootComponent } from 'expo';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { f, auth, database, storage } from './config/config.js';
 
@@ -19,16 +19,30 @@ const BottomStack= createBottomTabNavigator();
 
 function BottomTab(){
   return (
-    <NavigationContainer>
+    
       <BottomStack.Navigator>
         <BottomStack.Screen name="Feed" component={feed} />
         <BottomStack.Screen name="Upload" component={upload} />
         <BottomStack.Screen name="Profile" component={profile} />
       </BottomStack.Navigator>
+    
+  );
+}
+function MainStack() {
+  return (
+    <NavigationContainer>
+    <Stack.Navigator
+    initialRouteName="Home"
+    mode="modal"
+    headerMode='none'> 
+      <Stack.Screen name="Home" component={BottomTab} />
+      <Stack.Screen name="User" component={userProfile} />
+      <Stack.Screen name="Comments" component={comments} />
+      
+    </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
 export default function App() {
   
   useEffect(() => {
@@ -46,13 +60,8 @@ export default function App() {
   }
   
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={BottomTab} />
-        <Stack.Screen name="User" component={userProfile} />
-        <Stack.Screen name="Comments" component={comments} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <MainStack/>
+   
   );
 }
 

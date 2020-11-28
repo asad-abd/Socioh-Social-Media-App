@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, FlatList, StyleSheet,Text, View, Image} from 'react-native';
+import {Button, TouchableOpacity, FlatList, StyleSheet,Text, View, Image} from 'react-native';
 import { f, auth, database, storage } from '../../config/config.js';
 
 class feed extends React.Component{
@@ -120,8 +120,7 @@ class feed extends React.Component{
                         <View key={index} style={{width: '100%', overflow:'hidden', marginBottom: 5, justifyContent: 'space-between', borderBottomWidth: 1, borderColor:'grey'}}>
                             <View style={{padding:5, width: '100%', flexDirection:'row', justifyContent:'space-between'}}>
                                 <Text>{item.posted}</Text>
-                                <TouchableOpacity
-                                onPress{... () => this.props.navigation.navigate('User')}>
+                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('User')}>
                                     <Text>{item.author}</Text>
                                 </TouchableOpacity>
                             </View>
