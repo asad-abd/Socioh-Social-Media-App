@@ -25,3 +25,8 @@ instead use: "this.props.route.params"
 4. Observation/Note: in fetchUserInfo() in "userProfile.js", we cannot directly fetch the whole user object and have to make 3 separate calls for it.
 
 This is because of the way we have written our security rules. only the actual user can fetch the whole user object.
+
+5. Storing in the Firebase storage
+    This will be the location of image in firebase storage:- const ref = storage.ref('user/'+userid+'/img').child(FilePath); 
+    
+    Read the file: upload.js for more details

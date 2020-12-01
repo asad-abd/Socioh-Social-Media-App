@@ -134,7 +134,9 @@ class feed extends React.Component{
                             </View>
                             <View style={{padding:5}}>
                                <Text>{item.caption}</Text>
-                               <Text style={{marginTop: 10, textAlign:'center'}}>Read Comments...</Text>
+                               <TouchableOpacity  onPress={()=> this.props.navigation.navigate('Comments',{userId: item.id})}>
+                                    <Text style={{color: '#aaaaaa' , fontWeight:'bold', marginTop: 10, textAlign:'center'}}>Read Comments</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                     )}
