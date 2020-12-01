@@ -65,6 +65,7 @@ class profile extends React.Component{
                         </View>
                     </View>
                 ):(
+                    //not logged in
                    <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}> 
                         <Text>You are not logged in</Text>
                         <Text>Please login to view your profile</Text>

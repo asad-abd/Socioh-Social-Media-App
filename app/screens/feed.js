@@ -41,7 +41,8 @@ class feed extends React.Component{
                                 url: photoObj.url,
                                 caption: photoObj.caption,
                                 posted: that.timeConverter(photoObj.posted),
-                                author: data
+                                author: data,
+                                authorId: photoObj.author
                             });
 
                             that.setState({
@@ -109,8 +110,8 @@ class feed extends React.Component{
                     <View style={{flex:1, justifyContent: 'center', alignItems:'center'}}>
                         <Text>Loading...</Text>
                     </View>
-                ): 
-                (<FlatList
+                ): (
+                <FlatList
                     refreshing={this.state.refresh}
                     onRefresh={this.loadNew}
                     data={this.state.photo_feed}
@@ -120,7 +121,8 @@ class feed extends React.Component{
                         <View key={index} style={{width: '100%', overflow:'hidden', marginBottom: 5, justifyContent: 'space-between', borderBottomWidth: 1, borderColor:'grey'}}>
                             <View style={{padding:5, width: '100%', flexDirection:'row', justifyContent:'space-between'}}>
                                 <Text>{item.posted}</Text>
-                                <TouchableOpacity  onPress={() => this.props.navigation.navigate('User')}>
+                                
+                                <TouchableOpacity  onPress={()=> this.props.navigation.navigate('User',{userId: item.authorId})}>
                                     <Text>{item.author}</Text>
                                 </TouchableOpacity>
                             </View>
