@@ -5,14 +5,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import  { useState, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { f, auth, database, storage } from './config/config.js';
-
 
 import feed from './app/screens/feed.js'
 import profile from './app/screens/profile.js'
 import upload from './app/screens/upload.js'
 import userProfile from './app/screens/userProfile.js'
 import comments from './app/screens/comments.js'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Stack = createStackNavigator();
 const BottomStack= createBottomTabNavigator();
@@ -20,10 +19,39 @@ const BottomStack= createBottomTabNavigator();
 function BottomTab(){
   return (
     
-      <BottomStack.Navigator>
-        <BottomStack.Screen name="Feed" component={feed} />
-        <BottomStack.Screen name="Upload" component={upload} />
-        <BottomStack.Screen name="Profile" component={profile} />
+      <BottomStack.Navigator
+      tabBarOptions={{
+        activeTintColor: '#e91e63'
+      }}>
+        <BottomStack.Screen 
+        name="Feed" 
+        component={feed} 
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home-outline" color={color} size={size} />
+          ),
+          }} 
+        />
+
+        <BottomStack.Screen 
+        name="Upload" 
+        component={upload}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="camera-plus-outline" color={color} size={size} />
+          ),
+          }} 
+        />
+
+        <BottomStack.Screen 
+        name="Profile" 
+        component={profile} 
+          options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="account-outline" color={color} size={size} />
+          ),
+          }}
+        />
       </BottomStack.Navigator>
     
   );
@@ -47,17 +75,9 @@ export default function App() {
   
   useEffect(() => {
     // Your code here
-    login();
+    
   }, []);
 
-  login = async() => {
-    // force login the user
-    try{
-      let user = await auth.signInWithEmailAndPassword('test@user.com','password');
-    }catch(error){
-      console.log(error)
-    }
-  }
   
   return (
     <MainStack/>
@@ -73,14 +93,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-//registerRootComponent(App);
-/*
-// in case of function App
-<NavigationContainer>
-      <BottomStack.Navigator>
-        <BottomStack.Screen name="Feed" component={feed} />
-        <BottomStack.Screen name="Upload" component={upload} />
-        <BottomStack.Screen name="Profile" component={profile} />
-      </BottomStack.Navigator>
-    </NavigationContainer>
-*/
