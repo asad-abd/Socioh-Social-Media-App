@@ -3,8 +3,18 @@
   "displayName": "Socioh",
   "expo": {
     "name": "Socioh",
+    "icon": "./app/icon/app-icon.png",
+    "description": "an image sharing social app",
     "slug": "Socioh",
     "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "com.asad.socioh",
+      "buildNumber": "1.0.0"
+    },
+	  "android": {
+      "package": "com.asad.socioh",
+      "versionCode": 1
+    },
     "assetBundlePatterns": [
       "**/*"
     ]
