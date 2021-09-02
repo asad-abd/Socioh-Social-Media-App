@@ -27,4 +27,4 @@
 ![Upload](./app_screen_shots/upload.jpg)
 
 ## Firebase DB 
-![DB](./Database_sample.jpg)
+![DB](./Database_sample.png)
